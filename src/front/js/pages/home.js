@@ -2,25 +2,35 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-
+import { Card } from "../component/card";
+import { Planets } from "../component/planets.js";
 export const Home = () => {
-	const { store, actions } = useContext(Context);
-
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-		</div>
-	);
+  const { store, actions } = useContext(Context);
+  console.log(store);
+  return (
+    <div>
+      <div className="text-center mt-5">
+        <h1>
+          <strong> STAR WARS!! </strong>
+        </h1>
+      </div>
+      <div className="row characterRow flex-nowrap ">
+        {store.people.results &&
+          store.people.results.map((item, i) => {
+            return <Card key={i} title={item.name} text={item.ieyeColor} />;
+          })}
+      </div>
+      <div className="row flex-nowrap characterRow">
+        {store.planets.map((planet, idx) => {
+          return (
+            <Planets
+              key={idx}
+              title={planet.name}
+              text={`${planet.name} is a planet with a gravity of ${planet.gravity}, and it has a ${planet.climate} climate.`}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 };
