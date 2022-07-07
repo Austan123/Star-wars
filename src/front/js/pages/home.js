@@ -17,7 +17,14 @@ export const Home = () => {
       <div className="row characterRow flex-nowrap ">
         {store.people.results &&
           store.people.results.map((item, i) => {
-            return <Card key={i} title={item.name} text={item.ieyeColor} />;
+            return (
+              <Card
+                key={i}
+                title={item.name}
+                text={item.ieyeColor}
+                id={item.uid}
+              />
+            );
           })}
       </div>
       <div className="row flex-nowrap characterRow">

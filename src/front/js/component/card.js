@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   const { store, actions } = useContext(Context);
@@ -17,9 +18,11 @@ const Card = (props) => {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </p>
-        <a href="#!" className="btn btn-primary">
+        <Link to={"/define/" + props.id} onClick={()=>
+        {actions.getSingle(props.id)}}
+        className="btn btn-primary">
           Button
-        </a>
+        </Link>
       </div>
     </div>
   );
