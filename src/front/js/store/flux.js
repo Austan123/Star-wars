@@ -5,11 +5,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       people: [],
       single: [],
       spaceship: [],
+
+      getPeople: [],
     },
     actions: {
-      getSinglePerson: () => {
-       
-      },
+      getSinglePerson: () => {},
       getPeople: async () => {
         try {
           const response = await fetch("https://swapi.dev/api/people/");
@@ -36,6 +36,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           throw Error("This is my error", error);
         }
+      },
+
+      getSingle: (id) => {
+        var requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+        fetch(`https://www.swapi.tech/api/people/${id}`, requestOptions)
+          .then((response) => response.json())
+          .then((result) => setStore({ getPeople: result }))
+          .catch((error) => console.log("error", error));
       },
 
       getPlanets: () => {
