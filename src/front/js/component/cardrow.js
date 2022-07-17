@@ -29,8 +29,17 @@ export const CardRow = (props) => {
                 <p className="card-text" style={{ color: "white" }}>
                   {item.description}
                 </p>
-                <Link to={"/"+props.title+"/" + idx} className="btn btn-primary">
-                  <button> Learn more </button>
+                <Link
+                  to={"/" + props.title + "/" + idx}
+                  className="btn btn-primary"
+                >
+                  <button
+                    onClick={() => {
+                      actions.getTitle(props.title);
+                    }}
+                  >
+                    Learn more
+                  </button>
                 </Link>
               </div>
             </div>

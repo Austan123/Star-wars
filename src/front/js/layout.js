@@ -11,9 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
 import { Description } from "./pages/description";
-
-import { Planets } from "./component/planets";
-import { Description } from "./component/description";
+// import { Description } from "./component/description";
 import { Card } from "./component/card.js";
 
 //create your first component
@@ -33,8 +31,6 @@ const Layout = () => {
             <Route element={<Single />} path="/single/:theid" />
 
             <Route element={<Description />} path="/:thetype/:theindex" />
-            <Route element={<Description />} path="/define/:theid" />
-            <Route element={<Planets />} path="/planets" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
 

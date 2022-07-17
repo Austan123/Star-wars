@@ -29,7 +29,6 @@ const injectContext = (PassedComponent) => {
        * store, instead use actions, like this:
        **/
       state.actions.getPlanets();
-
       state.actions.getPeople();
       state.actions.getSpaceShip();
       // state.actions.getMessage();

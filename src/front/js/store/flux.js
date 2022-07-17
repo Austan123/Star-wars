@@ -3,10 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       planets: [],
       people: [],
-      single: [],
       spaceship: [],
-
+      mars: [],
       getPeople: [],
+      getTitle: [],
     },
     actions: {
       getSinglePerson: () => {},
@@ -48,6 +48,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((result) => setStore({ getPeople: result }))
           .catch((error) => console.log("error", error));
       },
+      getPlanetDesc: (id) => {
+        var requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+        fetch(`https://swapi.dev/api/planets/${id}`, requestOptions)
+          .then((response) => response.json())
+          .then((result) => setStore({ mars: result }))
+          .catch((error) => console.log("error", error));
+      },
 
       getPlanets: () => {
         fetch("https://swapi.dev/api/planets")
@@ -55,6 +65,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             setStore({ planets: data.results });
           });
+      },
+      getTitle: (title) => {
+        setStore({ getTitle: title });
       },
 
       getTodos: () => {

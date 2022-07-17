@@ -4,8 +4,8 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { CardRow } from "../component/cardrow";
 import { Link } from "react-router-dom";
-
-export const Home = () => {
+import { Planets } from "../component/planets";
+export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
@@ -22,14 +22,7 @@ export const Home = () => {
         <div className="row characterRow flex-nowrap ">
           {store.people.results &&
             store.people.results.map((item, i) => {
-              return (
-                <Card
-                  key={i}
-                  title={item.name}
-                  text={item.ieyeColor}
-                  id={item.uid}
-                />
-              );
+              return <Card key={i} />;
             })}
         </div>
         <div className="row flex-nowrap characterRow">
