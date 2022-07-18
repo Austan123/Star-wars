@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       mars: [],
       getPeople: [],
       getTitle: [],
+      favorites: [],
     },
     actions: {
       getSinglePerson: () => {},
@@ -22,6 +23,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           throw Error("This is my error", error);
         }
+      },
+
+      getName: (name) => {
+        const store = getStore();
+        setStore({ favorites: [...store.favorites, name] });
+       console.log(store.favorites)
       },
 
       getSpaceShip: async () => {

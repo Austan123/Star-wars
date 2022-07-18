@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">
@@ -10,9 +12,10 @@ export const Navbar = () => {
         </Link>
         <div className="ml-auto">
           <Link to="/demo">
-            <button className="btn btn-primary">
-              Check the Context in action
-            </button>
+            {store.favorites.map((item, index) => {
+              return <div>{item}</div>;
+            })}
+            <button className="btn btn-primary">Favorites</button>
           </Link>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "../../styles/home.css";
 
 export const CardRow = (props) => {
   const { store, actions } = useContext(Context);
@@ -41,6 +42,15 @@ export const CardRow = (props) => {
                     Learn more
                   </button>
                 </Link>
+                <div className="icon">
+                  <button type="button" class="btn btn-danger" 
+                  onClick={() => {
+                    actions.getName(item.name)  
+                  }}>
+                    
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                  </button>
+                </div>
               </div>
             </div>
           );
