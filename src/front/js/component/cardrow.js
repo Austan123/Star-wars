@@ -43,11 +43,19 @@ export const CardRow = (props) => {
                   </button>
                 </Link>
                 <div className="icon">
-                  <button type="button" class="btn btn-danger" 
-                  onClick={() => {
-                    actions.getName(item.name)  
-                  }}>
-                    
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    onClick={() => {
+                      if (store.favorites.includes(item.name)) {
+                        console.log("Ive been clicked");
+
+                        return alert("user already favorited this character");
+                      } else {
+                        actions.getName(item.name);
+                      }
+                    }}
+                  >
                     <i class="fa fa-heart" aria-hidden="true"></i>
                   </button>
                 </div>

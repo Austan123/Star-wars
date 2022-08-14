@@ -10,7 +10,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites: [],
     },
     actions: {
-      getSinglePerson: () => {},
+      deleteFavorites: (index) => {
+        const store = getStore();
+        let filtered = store.favorites.filter((item, i) => i != index);
+        setStore({ favorites: filtered });
+      },
       getPeople: async () => {
         try {
           const response = await fetch("https://swapi.dev/api/people/");
@@ -28,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getName: (name) => {
         const store = getStore();
         setStore({ favorites: [...store.favorites, name] });
-       console.log(store.favorites)
+        console.log(store.favorites);
       },
 
       getSpaceShip: async () => {
